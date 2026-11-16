@@ -1,0 +1,72 @@
+{
+ "assets": [
+  "BTC-USD",
+  "ETH-USD"
+ ],
+ "start": "2018-01-01",
+ "end": "2026-11-01",
+ "features": [
+  "ret",
+  "vol7",
+  "vol30",
+  "dvol",
+  "range"
+ ],
+ "label_quantile": 0.75,
+ "max_window": 60,
+ "warmup": 30,
+ "n_folds": 2,
+ "initial_train": 0.5,
+ "val_fraction": 0.2,
+ "seeds": [
+  0
+ ],
+ "tune_seeds": [
+  0
+ ],
+ "ablation_seeds": [
+  0
+ ],
+ "nets": [
+  "cnn",
+  "gru",
+  "hybrid"
+ ],
+ "baselines": [
+  "prior",
+  "persist",
+  "roll7",
+  "ewma",
+  "garch",
+  "logreg",
+  "gboost",
+  "iforest"
+ ],
+ "net": {
+  "window": 30,
+  "hidden": 32,
+  "kernel": 3,
+  "dropout": 0.2,
+  "lr": 0.001,
+  "weight_decay": 0.0001,
+  "batch_size": 64,
+  "max_epochs": 6,
+  "patience": 3
+ },
+ "grid": {
+  "window": [
+   10,
+   30
+  ],
+  "hidden": [
+   16,
+   32
+  ]
+ },
+ "stress_injections": 2,
+ "stress_factor": 3.0,
+ "stress_length": 10,
+ "synthetic": false,
+ "data_dir": "data/raw",
+ "results_dir": "results_quick"
+}

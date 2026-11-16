@@ -1,0 +1,98 @@
+{
+ "assets": [
+  "BTC-USD",
+  "ETH-USD",
+  "^GSPC",
+  "AAPL",
+  "TSLA"
+ ],
+ "start": "2018-01-01",
+ "end": "2026-11-01",
+ "features": [
+  "ret",
+  "vol7",
+  "vol30",
+  "dvol",
+  "range"
+ ],
+ "label_quantile": 0.75,
+ "max_window": 60,
+ "warmup": 30,
+ "n_folds": 5,
+ "initial_train": 0.5,
+ "val_fraction": 0.2,
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "tune_seeds": [
+  0,
+  1
+ ],
+ "ablation_seeds": [
+  0,
+  1
+ ],
+ "nets": [
+  "cnn",
+  "gru",
+  "hybrid"
+ ],
+ "baselines": [
+  "prior",
+  "persist",
+  "roll7",
+  "ewma",
+  "garch",
+  "logreg",
+  "gboost",
+  "iforest"
+ ],
+ "net": {
+  "window": 30,
+  "hidden": 32,
+  "kernel": 3,
+  "dropout": 0.2,
+  "lr": 0.001,
+  "weight_decay": 0.0001,
+  "batch_size": 64,
+  "max_epochs": 60,
+  "patience": 8
+ },
+ "grid": {
+  "window": [
+   10,
+   20,
+   30,
+   60
+  ],
+  "hidden": [
+   16,
+   32,
+   64
+  ],
+  "dropout": [
+   0.0,
+   0.2,
+   0.4
+  ],
+  "lr": [
+   0.0003,
+   0.001,
+   0.003
+  ],
+  "kernel": [
+   3,
+   5
+  ]
+ },
+ "stress_injections": 10,
+ "stress_factor": 3.0,
+ "stress_length": 10,
+ "synthetic": false,
+ "data_dir": "data/raw",
+ "results_dir": "results"
+}
